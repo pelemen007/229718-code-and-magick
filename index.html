@@ -8,6 +8,7 @@
 </head>
 <body>
 
+
 <header>
   <svg style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 62
         86">
@@ -170,4 +171,35 @@
 </template>
 
 </body>
+<script>
+
+  var fireballSize;
+  fireballSize = 22;
+
+  var getFireballSpeed;
+
+  getFireballSpeed = function (left) {
+    if (left = true) {
+        return 5;}
+    else {
+        return 2;
+    }
+  };
+
+  wizardSpeed = 3;
+  wizardWidth = 70;
+  getWizardHeight = function () {
+    wizardHeight = 1.337 * wizardWidth;
+  };
+
+  function getWizardX(width) {
+width = 100;
+  }
+
+  function getWizardY(height) {
+height = -50;
+  }
+</script>
+
+<script src="js/game.js"></script>
 </html>
