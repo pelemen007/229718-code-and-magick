@@ -1,14 +1,18 @@
 'use strict';
 
+window.renderStatistics = function (ctx, names, times){
+  var max = window.getMaxTime(times);
+  window.drawCloud(ctx);
+  window.drawGistagramm(ctx, names, times, max);
+};
+
+
 // рисование облачка
-window.renderStatistics = function (ctx, times, names) {
+window.drawCloud = function (ctx) {
 
 // Отрисовка тёмного прямоугольника тени
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   ctx.fillRect(110, 20, 420, 270);
-
-// Очистка области под белый прямоугольник
-  ctx.clearRect(100, 10, 420, 270);
 
 // Отрисовка белого прямоугольника
   ctx.fillStyle = 'white';
@@ -22,20 +26,22 @@ window.renderStatistics = function (ctx, times, names) {
 };
 
 // Нахождение максимального времени
-  window.renderStatistics = function (times) {
+window.getMaxTime = function (times) {
 
-    var max = -1;
+  var max = -1;
 
-    for (var i = 0; i < times.length; i++) {
-      var time = times[i];
-      if (time > max) {
-        max = time;
-      }
+  for (var i = 0; i < times.length; i++) {
+    var time = times[i];
+    if (time > max) {
+      max = time;
     }
-  };
+  }
+
+  return max;
+};
 
 // рисуем гистограмму
-  window.renderStatistics = function (ctx, names, times) {
+window.drawGistagramm = function (ctx, names, times, max) {
   var histogramHeight = 150;              // высота гистограммы px;
   var step = histogramHeight / (max - 0); // шаг px;
   var barWidth = 40; // ширина колонки px;
@@ -53,4 +59,6 @@ window.renderStatistics = function (ctx, times, names) {
     ctx.textBaseline = 'bottom'; // положение надписи времени;
     ctx.fillText(Math.round(times[i]), initialX + indent * i + barWidth * i, initialY - (times[i] * step));
   }
+
 };
+
