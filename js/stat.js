@@ -51,8 +51,24 @@ window.drawGistagramm = function (ctx, names, times, max) {
 
 
   for (var i = 0; i < times.length; i++) {
+
+    //Задаём красный для себя и оттенки синего для остальных
+    var j = Math.random();
+    var colorName = function (names, i, j) {
+      if (names[i]=='Вы') {
+        return ('rgba(255, 0, 0, 1)')
+      }
+      else {
+        return ('rgba(0,0,255,j)')
+      }
+    };
+    ctx.fillStyle = colorName(names, i, j);
+
+    //Рисуем саму гистограмму
     ctx.fillRect(initialX + (indent * i) + (barWidth * i), initialY, barWidth, -(times[i] * step));
 
+    //Добавляем Имя и Время
+    ctx.fillStyle = 'rgba(0,0,0,1)';
     ctx.textBaseline = 'top'; // положение надписи имени;
     ctx.fillText(names[i], initialX + indent * i + barWidth * i, initialY);
 
