@@ -59,7 +59,7 @@ window.drawGistagramm = function (ctx, names, times, max) {
         return ('rgba(255, 0, 0, 1)');
       }
       else (
-        return ('rgba(0,0,255,'+ j +')');
+        return ('rgba(0,0,255,'+ j +')')
       )
     };
     ctx.fillStyle = colorName(names, i, j);
