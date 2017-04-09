@@ -54,11 +54,10 @@ window.drawGistagramm = function (ctx, names, times, max) {
 
     // Задаём красный для себя и оттенки синего для остальных
     var j = Math.random();
-    var colorName = function (i, j) {
+    var colorName = function () {
       if (names[i] === 'Вы') {
         return ('rgba(255, 0, 0, 1)');
-      }
-      else {
+      } else {
         return ('rgba(0,0,255,' + j + ')');
       }
     };
