@@ -1,6 +1,6 @@
 'use strict';
 
-window.renderStatistics = function (ctx, names, times){
+window.renderStatistics = function (ctx, names, times) {
   var max = window.getMaxTime(times);
   window.drawCloud(ctx);
   window.drawGistagramm(ctx, names, times, max);
@@ -52,22 +52,22 @@ window.drawGistagramm = function (ctx, names, times, max) {
 
   for (var i = 0; i < times.length; i++) {
 
-    //Задаём красный для себя и оттенки синего для остальных
+    // Задаём красный для себя и оттенки синего для остальных
     var j = Math.random();
-    var colorName = function (names, i, j) {
-      if (names[i]=='Вы') {
-        return ('rgba(255, 0, 0, 1)')
+    var colorName = function () {
+      if (names[i] === 'Вы') {
+        return ('rgba(255, 0, 0, 1)');
       }
-      else {
-        return ('rgba(0,0,255,'+j+')')
-      }
+      else (
+        return ('rgba(0,0,255,'+ j +')');
+      )
     };
     ctx.fillStyle = colorName(names, i, j);
 
-    //Рисуем саму гистограмму
+    // Рисуем саму гистограмму
     ctx.fillRect(initialX + (indent * i) + (barWidth * i), initialY, barWidth, -(times[i] * step));
 
-    //Добавляем Имя и Время
+    // Добавляем Имя и Время
     ctx.fillStyle = 'rgba(0,0,0,1)';
     ctx.textBaseline = 'top'; // положение надписи имени;
     ctx.fillText(names[i], initialX + indent * i + barWidth * i, initialY);
